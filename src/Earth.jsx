@@ -1,6 +1,8 @@
 import React, { useRef } from 'react'
 import { useTexture } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+import Moon from './Moon'
+import ISS from './ISS'
 
 function Earth() {
     const earthRef = useRef()
@@ -9,18 +11,22 @@ function Earth() {
         earthRef.current.rotation.y += 0.002
     })
     return (
-    <mesh ref={earthRef}>
+        <group>
+    <mesh receiveShadow ref={earthRef}>
         {/* [radius , x axis , y axis] */}
-        <sphereGeometry args={[1,32,32]} />
+        <sphereGeometry args={[1,128,128]} />
         <meshPhongMaterial 
-
         map={earthTexture} 
         normalMap={earthNoramlMap}  
         specularMap={earthSpecularMap} 
+        shininess={200}
         displacementMap={earthDisplacementMap}
         displacementScale={0.1}
         />
     </mesh>
+    <ISS />
+    <Moon />
+    </group>
   )
 }
 

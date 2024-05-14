@@ -4,6 +4,7 @@ import AnimatedStars from './AnimatedStars'
 import Earth from './Earth'
 import { useRef } from 'react'
 import * as THREE from 'three'
+import Moon from './Moon'
 
 function MainContainer() {
     const directionalLightRef = useRef()
@@ -12,7 +13,7 @@ function MainContainer() {
   return (
     <>
         <color attach='background' args={['black']} />
-        <directionalLight ref={directionalLightRef} position={[0,0,10]} />
+        <directionalLight castShadow ref={directionalLightRef} position={[0,0,10]} />
         <ambientLight />
         <AnimatedStars />
         <Earth />
